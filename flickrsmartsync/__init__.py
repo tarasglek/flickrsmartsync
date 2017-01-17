@@ -18,7 +18,7 @@ hdlr = SysLogHandler()
 formatter = logging.Formatter('flickrsmartsync %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 def main():

@@ -154,6 +154,9 @@ class Remote(object):
                 # Make sure it's the one from backup format
                 desc = html_parser.unescape(current_set['description']['_content'])
                 desc = desc.encode('utf-8') if isinstance(desc, unicode) else desc
+                title = current_set['title']['_content']
+                title = title.encode('utf-8') if isinstance(title, unicode) else title
+                desc = title
                 if desc:
                     self.photo_sets_map[desc] = current_set['id']
                     title = self.get_custom_set_title(self.cmd_args.sync_path + desc)
