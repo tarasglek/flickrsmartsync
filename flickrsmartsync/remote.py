@@ -203,10 +203,12 @@ class Remote(object):
     def download(self, url, path):
         folder = os.path.dirname(path)
         if not os.path.isdir(folder):
-            os.makedirs(folder)   
+            os.makedirs(folder)
+        tmp = path + ".tmp"
         for i in range(RETRIES):
             try:
-                return urllib.urlretrieve(url, path)
+                urllib.urlretrieve(url, tmp)
+                return os.rename(tmp, path)
             except Exception as e:
                 logger.warning("Retrying download of %s after error: %s" % (path, e))
         # failed many times
